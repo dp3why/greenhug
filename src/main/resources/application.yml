@@ -4,7 +4,7 @@ spring:
     property-naming-strategy: SNAKE_CASE
   datasource:
     url: jdbc:postgresql://${DATABASE_URL}:5432/onlineorder
-    username: ${DATABASE_USERNAME:postgres
+    username: ${DATABASE_USERNAME}
     password: ${DATABASE_PASSWORD}
     driver-class-name: org.postgresql.Driver
   jpa:
