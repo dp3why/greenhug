@@ -12,8 +12,8 @@ spring:
       mode: ${INIT_DB:never}
       schema-locations: "classpath:database-init.sql"
 
-logging:
-  level:
+#logging:
+#  level:
     # org.apache.coyote.http11.Http11InputBuffer: DEBUG # Incoming HTTP requests
     # org.springframework.jdbc.datasource.init: DEBUG
     # org.springframework.jdbc.core: DEBUG # SQL
