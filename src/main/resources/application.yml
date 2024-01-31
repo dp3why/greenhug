@@ -3,13 +3,17 @@ spring:
     default-property-inclusion: non_null
     property-naming-strategy: SNAKE_CASE
   datasource:
-    url: jdbc:postgresql://${DATABASE_URL:localhost}:5432/onlineorder?createDatabaseIfNotExist=true
+    url: jdbc:postgresql://${DATABASE_URL:ec2-18-144-55-106.us-west-1.compute.amazonaws.com}:5432/onlineorder
     username: ${DATABASE_USERNAME:postgres}
-    password: ${DATABASE_PASSWORD:Dsci-551}
+    password: ${DATABASE_PASSWORD:root@Dsci-551}
     driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      #      ddl-auto: create-drop  # dev
+      ddl-auto: update
   sql:
     init:
-      mode: ${INIT_DB:never}
+      mode: ${INIT_DB:always}
       schema-locations: "classpath:database-init.sql"
 
 #logging:
