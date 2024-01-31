@@ -13,7 +13,7 @@ spring:
       ddl-auto: update
   sql:
     init:
-      mode: ${INIT_DB:always}
+      mode: ${INIT_DB:never}
       schema-locations: "classpath:database-init.sql"
 
 #logging:
