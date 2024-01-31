@@ -10,4 +10,4 @@ EXPOSE 8080
 VOLUME /tmp
 ARG JAR_FILE=/home/gradle/src/build/libs/onlineorder-0.0.1-SNAPSHOT.jar
 COPY --from=build ${JAR_FILE} app.jar
-ENTRYPOINT ["java", "-jar", "-Dserver.port=$PORT", "/app.jar"]
+ENTRYPOINT ["java", "-jar", "-Dserver.port=8080", "/app.jar"]
