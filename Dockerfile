@@ -1,17 +1,13 @@
-# Start with a base image containing Java runtime
+# Stage 1: Build the application
+FROM gradle:7.5.1-jdk17-alpine AS build
+WORKDIR /home/gradle/src
+COPY --chown=gradle:gradle . /home/gradle/src
+RUN gradle build --no-daemon
+
+# Stage 2: Create the Docker final image
 FROM openjdk:17-alpine
-
-# Add a volume pointing to /tmp
-VOLUME /tmp
-
-# Make port 8080 available to the world outside this container
 EXPOSE 8080
-
-# The application's jar file
-ARG JAR_FILE=build/libs/onlineorder-0.0.1-SNAPSHOT.jar
-
-# Add the application's jar to the container
-ADD ${JAR_FILE} app.jar
-
-# Run the jar file
+VOLUME /tmp
+ARG JAR_FILE=/home/gradle/src/build/libs/onlineorder-0.0.1-SNAPSHOT.jar
+COPY --from=build ${JAR_FILE} app.jar
 ENTRYPOINT ["java", "-jar", "-Dserver.port=$PORT", "/app.jar"]
