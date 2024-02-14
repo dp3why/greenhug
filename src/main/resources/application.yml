@@ -13,8 +13,11 @@ spring:
       ddl-auto: update
   sql:
     init:
-      mode: ${INIT_DB:never}
+      mode: ${INIT_DB:always}
       schema-locations: "classpath:database-init.sql"
+  cache:
+    caffeine:
+      spec: expireAfterWrite=30m
 
 #logging:
 #  level:
